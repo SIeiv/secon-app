@@ -1,4 +1,3 @@
-import {Button} from "antd";
 import {FC} from "react";
 
 interface IButtonAuth {

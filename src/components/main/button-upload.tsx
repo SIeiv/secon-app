@@ -1,5 +1,5 @@
 import {PlusOutlined} from "@ant-design/icons";
-import {FC, ReactElement, useEffect, useState} from "react";
+import {FC} from "react";
 
 interface IButtonUpload {
     size?: number;
@@ -18,9 +18,7 @@ const ButtonUpload: FC<IButtonUpload> = ({onChange, onClick, onSubmit}) => {
                 <div className={"text-sm"}>Загрузить</div>
                 <input multiple type={"file"}
                        className={"absolute w-[100px] h-[100px] cursor-pointer text-transparent"}
-                       onChange={(e) => {
-                           onChange(e);
-                       }}
+                       onChange={onChange}
                        onClick={onClick}
                        onSubmit={onSubmit}
                 >
