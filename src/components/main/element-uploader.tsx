@@ -13,9 +13,9 @@ const ElementUploader: FC<IUploader> = ({title}) => {
         <img className={"w-[100px] h-[100px]"} src={image} alt=""/>
     )
 
-    const handleFilesUploadChange = (event) => {
+    const handleFilesUploadChange = (event: any) => {
 
-        let out: File[] = [];
+        const out: File[] = [];
         for (let i = 0; i < event.target.files.length; i++) {
             out.push(event.target.files[i]);
         }
@@ -26,7 +26,7 @@ const ElementUploader: FC<IUploader> = ({title}) => {
     }
 
     useEffect(() => {
-        let outImages: string[] = [];
+        const outImages: string[] = [];
         for (let j = 0; j < uploadedFiles.length; j++) {
             outImages.push(URL.createObjectURL(uploadedFiles[j]));
         }
