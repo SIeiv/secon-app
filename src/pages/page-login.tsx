@@ -2,12 +2,11 @@ import BaseAuth from "../components/common/base-auth.tsx";
 import {Button, Input} from "antd";
 import {useNavigate} from "react-router";
 import {FC} from "react";
-import {IRouterAuth} from "../routers/router-auth.tsx";
-import ButtonAuth from "../components/auth/button-auth.tsx";
+import {IRouter} from "../routers/router-auth.tsx";
 
 
 
-const PageLogin: FC<IRouterAuth> = ({sourceDir}) => {
+const PageLogin: FC<IRouter> = ({sourceDir}) => {
     const navigate = useNavigate();
 
     const toRegisterHandleClick = () => {
