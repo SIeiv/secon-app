@@ -6,7 +6,7 @@ interface IBaseBlockMain {
 
 const BaseBlockMain: FC<IBaseBlockMain> = ({children}) => {
     return (
-        <div className={"w-full bg-[#181B50] rounded-lg flex justify-start items-start box-border p-3"}>
+        <div className={"w-full bg-white rounded-lg flex justify-start items-start box-border p-3"}>
             {children}
         </div>
     );

@@ -1,38 +1,45 @@
 import BaseAuth from "../components/common/base-auth.tsx";
-import {Button, Input} from "antd";
+import {Button} from "antd";
 import {useNavigate} from "react-router";
-import {FC} from "react";
+import {FC, useState} from "react";
 import {IRouter} from "../routers/router-auth.tsx";
+import InputAuth from "../components/auth/input-auth.tsx";
+import {useAppDispatch} from "../hooks.ts";
+import {loginUser} from "../redux/authACs.ts";
 
 
 
 const PageLogin: FC<IRouter> = ({sourceDir}) => {
-    const navigate = useNavigate();
+    const dispatch = useAppDispatch();
 
-    const toRegisterHandleClick = () => {
-        navigate(`${sourceDir}/register`);
+    if (localStorage.getItem("token") !== "" || localStorage.getItem("token")) window.location.href = "/history"
+
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+
+    const handleUsernameChange = (e) => {
+        setUsername(e.target.value);
     }
 
-    const registerHandleClick = () => {
-        navigate(`/`);
+    const handlePasswordChange = (e) => {
+        setPassword(e.target.value);
+    }
+
+    const handleLoginClick = () => {
+        dispatch(loginUser({username, password}));
     }
 
     return (
-        <div className="w-screen h-screen flex flex-col justify-center">
-            <BaseAuth title={"ВХОД"}>
-                <div className="flex flex-col gap-[36px] py-[30px]">
-                    <Input className={"h-[48px] text-[24px]"} size={"large"} placeholder="Введите имя пользователя или email" />
-                    <Input className={"h-[48px] text-[24px]"} size={"large"} placeholder="Введите пароль" />
+        <div className="bg-slate-50 w-screen h-screen flex flex-col justify-center">
+            <BaseAuth title={"Вход"}>
+                <div className="flex flex-col gap-4 py-4">
+                    <InputAuth value={username} onChange={handleUsernameChange} title={"Имя пользователя"}
+                               placeholder={"Введите имя пользователя"}/>
+                    <InputAuth value={password} onChange={handlePasswordChange} type={"password"} title={"Пароль"}
+                               placeholder={"Введите пароль"}/>
                 </div>
-                <div className={"flex flex-col items-center gap-6"}>
-                    <Button className={"w-full"} size={"large"} onClick={registerHandleClick}>Войти</Button>
-                    {/*<ButtonAuth title={"Войти"}/>*/}
-                    <div>
-                        <div className="text-[#9197f2]">
-                            <span>Нет Аккаунта? </span>
-                            <span onClick={toRegisterHandleClick} className={"font-semibold hover:underline cursor-pointer"}>Регистрация</span>
-                        </div>
-                    </div>
+                <div className={"flex flex-col items-start gap-6 pt-2"}>
+                    <Button style={{ background: "#6540C5"}} className={"w-full"} size={"large"} type={"primary"} onClick={handleLoginClick}>Войти</Button>
                 </div>
             </BaseAuth>
         </div>

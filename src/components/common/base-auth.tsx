@@ -7,8 +7,8 @@ interface IBaseAuth {
 
 const BaseAuth: FC<IBaseAuth> = ({children, title}) => {
     return (
-        <div className="w-[480px] mx-auto bg-[#181B50] p-6 rounded-md">
-            <div className={"text-white text-[30px] flex w-full justify-center roboto"}>{title}</div>
+        <div className="w-[430px] mx-auto bg-white p-4 rounded-md">
+            <div className={"text-black text-[30px] flex w-full justify-start roboto"}>{title}</div>
             {children}
         </div>
     );

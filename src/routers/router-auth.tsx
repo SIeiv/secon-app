@@ -12,7 +12,7 @@ const RouterAuth: FC<IRouter> = ({sourceDir}) => {
         <div>
             <Routes>
                 <Route path={`${sourceDir}/login`} element={<PageLogin sourceDir={sourceDir}/>} />
-                <Route path={`${sourceDir}/register`} element={<PageRegister sourceDir={sourceDir}/>} />
+                {/*<Route path={`${sourceDir}/register`} element={<PageRegister sourceDir={sourceDir}/>} />*/}
             </Routes>
         </div>
     );
